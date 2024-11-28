@@ -83,6 +83,8 @@ function generateFile(currentPath, subsitutions, templateDir, generatedDir) {
 
   if (!fs.existsSync(generatedDir)) {
     generateFile("/", subsitutions, templateDir, generatedDir);
+    fs.renameSync(path.join(generatedDir, "template.gitignore"), path.join(generatedDir, ".gitignore"));
+    fs.renameSync(path.join(generatedDir, "template.npmignore"), path.join(generatedDir, ".npmignore"));
     console.log(`Done!`);
   } else {
     console.log(`Aborting! ${generatedDir} already exists!`);
