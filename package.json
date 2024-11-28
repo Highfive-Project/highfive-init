@@ -1,0 +1,9 @@
+{
+  "name": "@highfive/init",
+  "version": "0.1.0",
+  "description": "Interactive init script for highfive projects",
+  "main": "./index",
+  "author": "jasmaa",
+  "license": "Apache-2.0",
+  "dependencies": {}
+}
