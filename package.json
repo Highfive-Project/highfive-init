@@ -2,9 +2,9 @@
   "name": "@highfive/init",
   "version": "0.1.4",
   "description": "Interactive init script for highfive projects",
-  "main": "./index",
+  "main": "./bin",
   "author": "jasmaa",
   "license": "Apache-2.0",
   "dependencies": {},
-  "bin": "./index.js"
+  "bin": "./bin.js"
 }

@@ -1,8 +1,13 @@
-#!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
 const readline = require('node:readline');
 
+/**
+ * Polls for user input asynchronously
+ * 
+ * @param {string} question User prompt
+ * @returns {Promise<string>} User answer
+ */
 function askQuestion(question) {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -17,10 +22,24 @@ function askQuestion(question) {
   })
 }
 
+/**
+ * Capitalizes first letter in a string
+ * 
+ * @param {string} val Input value
+ * @returns {string} Capitalized value
+ */
 function capitalizeFirstLetter(val) {
   return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 
+/**
+ * Subsitutes variables in content using
+ * key-value pairs from subsitutions
+ * 
+ * @param {string} content Content to subsitute variables in
+ * @param {{key: string, value: string}[]} subsitutions Key-value pairs of variables
+ * @returns {string} Content with variables subsituted
+ */
 function subsituteContent(content, subsitutions) {
   let updatedContent = content;
   for (const { key, value } of subsitutions) {
@@ -29,7 +48,15 @@ function subsituteContent(content, subsitutions) {
   return updatedContent;
 }
 
-function generateFile(currentPath, subsitutions, templateDir, generatedDir) {
+/**
+ * Recursively generates project directory from template directory
+ * 
+ * @param {string} currentPath Relative path for current location in the template directory
+ * @param {{key: string, value: string}[]} subsitutions Key-value pairs of variables
+ * @param {string} templateDir Path of template directory
+ * @param {string} generatedDir Path of generated project directory
+ */
+function generateProject(currentPath, subsitutions, templateDir, generatedDir) {
   const files = fs.readdirSync(path.join(templateDir, currentPath));
 
   for (const file of files) {
@@ -51,14 +78,14 @@ function generateFile(currentPath, subsitutions, templateDir, generatedDir) {
       console.log(`Wrote to ${generatedFilePath}.`);
 
     } else if (lstat.isDirectory()) {
-      generateFile(localFilePath, subsitutions, templateDir, generatedDir);
+      generateProject(localFilePath, subsitutions, templateDir, generatedDir);
     } else {
       console.log(`Could not determine file type for ${templateFilePath}. Skipping...`);
     }
   }
 }
 
-(async () => {
+async function main() {
   const langSlug = await askQuestion("Enter your language's slug (ex. vtl): ");
   const langName = await askQuestion("Enter your language's name (ex. Apache Velocity): ");
   const highlighterName = `hljs${capitalizeFirstLetter(langSlug)}`;
@@ -82,11 +109,17 @@ function generateFile(currentPath, subsitutions, templateDir, generatedDir) {
   const generatedDir = `highlightjs-${langSlug}`;
 
   if (!fs.existsSync(generatedDir)) {
-    generateFile("/", subsitutions, templateDir, generatedDir);
+    generateProject("/", subsitutions, templateDir, generatedDir);
+
+    // gitignore and npmignore need to be named differently since they don't get
+    // packed by npm publish
     fs.renameSync(path.join(generatedDir, "template.gitignore"), path.join(generatedDir, ".gitignore"));
     fs.renameSync(path.join(generatedDir, "template.npmignore"), path.join(generatedDir, ".npmignore"));
+
     console.log(`Done!`);
   } else {
     console.log(`Aborting! ${generatedDir} already exists!`);
   }
-})();
+}
+
+module.exports = { main };
