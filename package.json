@@ -1,5 +1,5 @@
 {
-  "name": "@highfive/init",
+  "name": "highfive-init",
   "version": "0.1.5-alpha",
   "description": "Interactive init script for highfive projects",
   "main": "./bin",

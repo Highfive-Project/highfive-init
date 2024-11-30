@@ -1,4 +1,4 @@
-# @highfive/init
+# highfive-init
 
 Interactive init script for highfive projects
 
@@ -8,7 +8,10 @@ Interactive init script for highfive projects
 Create a new project:
 
 ```
-npx github:Highfive-Project/init
+npx highfive-init
+
+# ...or use bleeding edge from github
+npx github:Highfive-Project/highfive-init
 
 cd highlightjs-<SLUG>
 git init
