@@ -18,6 +18,5 @@ jobs:
           node-version: "23"
       - run: yarn install --immutable --immutable-cache --check-cache
       - run: yarn test --coverage
-      - run: yarn build
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
