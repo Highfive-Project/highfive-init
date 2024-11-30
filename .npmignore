@@ -1,5 +1,5 @@
 .github
-test
 *.tgz
+coverage/
 
 !template/**
