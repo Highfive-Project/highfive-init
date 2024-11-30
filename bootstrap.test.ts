@@ -28,7 +28,7 @@ beforeEach(() => {
 });
 
 it('creates project directory', async () => {
-  await bootstrap.main();
+  await bootstrap();
 
   expect(fs.existsSync("./highlightjs-dummy")).toBeTruthy();
   expect(fs.lstatSync("./highlightjs-dummy").isDirectory()).toBeTruthy();
