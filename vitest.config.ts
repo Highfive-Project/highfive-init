@@ -5,6 +5,9 @@ export default defineConfig({
     exclude: [
       ...configDefaults.exclude,
       'template/**'
-    ]
+    ],
+    coverage: {
+      exclude: [...configDefaults.coverage.exclude!, 'template/**'],
+    },
   },
 });
