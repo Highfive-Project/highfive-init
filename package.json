@@ -5,6 +5,14 @@
   "main": "./bin",
   "author": "jasmaa",
   "license": "Apache-2.0",
-  "dependencies": {},
-  "bin": "./bin.js"
+  "bin": "./bin.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "memfs": "^4.14.0",
+    "mock-require": "^3.0.3",
+    "vitest": "^2.1.6"
+  }
 }
