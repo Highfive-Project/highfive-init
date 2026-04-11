@@ -12,7 +12,7 @@
   "devDependencies": {
     "@types/mock-require": "^3.0.0",
     "@types/node": "^22.10.1",
-    "@vitest/coverage-v8": "2.1.6",
+    "@vitest/coverage-v8": "^4.1.4",
     "memfs": "^4.14.0",
     "mock-require": "^3.0.3",
     "vitest": "^4.1.4"
