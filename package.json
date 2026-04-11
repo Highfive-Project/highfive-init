@@ -5,7 +5,9 @@
   "main": "./bin",
   "author": "jasmaa",
   "license": "Apache-2.0",
-  "bin": "./bin.js",
+  "bin": {
+    "highfive-init": "bin.js"
+  },
   "scripts": {
     "test": "vitest"
   },
