@@ -1,6 +1,6 @@
 {
   "name": "highfive-init",
-  "version": "0.1.6-alpha",
+  "version": "0.1.7-alpha",
   "description": "Interactive init script for highfive projects",
   "main": "./bin",
   "author": "jasmaa",
