@@ -7,7 +7,7 @@
     "build": "webpack --mode=production",
     "lint": "prettier --check .",
     "format": "prettier --write .",
-    "test": "yarn test && jest"
+    "test": "yarn lint && jest"
   },
   "license": "Apache-2.0",
   "devDependencies": {
