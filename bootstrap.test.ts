@@ -33,5 +33,6 @@ it('creates project directory', async () => {
   expect(fs.existsSync("./highlightjs-dummy")).toBeTruthy();
   expect(fs.lstatSync("./highlightjs-dummy").isDirectory()).toBeTruthy();
   expect(fs.readFileSync("./highlightjs-dummy/README.md", "utf8").includes("highlightjs-dummy")).toBeTruthy();
+  expect(fs.readFileSync("./highlightjs-dummy/docs/RELEASE.md", "utf8").includes("hljs-dummy.min.js")).toBeTruthy();
 });
 

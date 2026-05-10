@@ -5,7 +5,9 @@
   "main": "src/HIGHFIVE_LANG_SLUG.js",
   "scripts": {
     "build": "webpack --mode=production",
-    "test": "prettier --check . && jest"
+    "lint": "prettier --check .",
+    "format": "prettier --write .",
+    "test": "yarn test && jest"
   },
   "license": "Apache-2.0",
   "devDependencies": {
